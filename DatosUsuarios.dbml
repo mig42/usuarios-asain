@@ -6,60 +6,60 @@
       <Column Name="IdUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Comentario" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="Usuarios_Asistencia" Member="Usuarios" ThisKey="IdUsuario" OtherKey="IdUsuario" Type="Usuarios" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Usuarios_Asistencia" Member="Usuario" ThisKey="IdUsuario" OtherKey="IdUsuario" Type="Usuario" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.[Estado civil]" Member="Estado_civil">
     <Type Name="Estado_civil">
       <Column Name="IdEstadocivil" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Estadocivil" Type="System.String" DbType="NVarChar(512) NOT NULL" CanBeNull="false" />
-      <Association Name="Estado_civil_Usuarios" Member="Usuarios" ThisKey="IdEstadocivil" OtherKey="IdEstadocivil" Type="Usuarios" />
+      <Association Name="Estado_civil_Usuarios" Member="Usuario" ThisKey="IdEstadocivil" OtherKey="IdEstadocivil" Type="Usuario" />
     </Type>
   </Table>
   <Table Name="dbo.Estudios" Member="Estudios">
     <Type Name="Estudios">
       <Column Name="IdEstudios" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Estudios" Member="Estudios1" Type="System.String" DbType="NVarChar(512) NOT NULL" CanBeNull="false" />
-      <Association Name="Estudios_Usuarios" Member="Usuarios" ThisKey="IdEstudios" OtherKey="IdEstudios" Type="Usuarios" />
+      <Association Name="Estudios_Usuarios" Member="Usuario" ThisKey="IdEstudios" OtherKey="IdEstudios" Type="Usuario" />
     </Type>
   </Table>
-  <Table Name="dbo.Intereses" Member="Intereses">
-    <Type Name="Intereses">
+  <Table Name="dbo.Intereses" Member="Interes">
+    <Type Name="Interes">
       <Column Name="IdIntereses" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Intereses" Member="Intereses1" Type="System.String" DbType="NVarChar(512) NOT NULL" CanBeNull="false" />
-      <Association Name="Intereses_Usuarios" Member="Usuarios" ThisKey="IdIntereses" OtherKey="IdIntereses" Type="Usuarios" />
+      <Association Name="Intereses_Usuarios" Member="Usuario" ThisKey="IdIntereses" OtherKey="IdIntereses" Type="Usuario" />
     </Type>
   </Table>
   <Table Name="dbo.Origen" Member="Origen">
     <Type Name="Origen">
       <Column Name="IdOrigen" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="País" Type="System.String" DbType="NVarChar(512) NOT NULL" CanBeNull="false" />
-      <Association Name="Origen_Usuarios" Member="Usuarios" ThisKey="IdOrigen" OtherKey="IdOrigen" Type="Usuarios" />
+      <Association Name="Origen_Usuarios" Member="Usuario" ThisKey="IdOrigen" OtherKey="IdOrigen" Type="Usuario" />
     </Type>
   </Table>
   <Table Name="dbo.Profesión" Member="Profesión">
     <Type Name="Profesión">
       <Column Name="IdProfesión" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Profesión" Member="Profesión1" Type="System.String" DbType="NVarChar(512) NOT NULL" CanBeNull="false" />
-      <Association Name="Profesión_Usuarios" Member="Usuarios" ThisKey="IdProfesión" OtherKey="IdProfesión" Type="Usuarios" />
+      <Association Name="Profesión_Usuarios" Member="Usuario" ThisKey="IdProfesión" OtherKey="IdProfesión" Type="Usuario" />
     </Type>
   </Table>
   <Table Name="dbo.[Situación laboral]" Member="Situación_laboral">
     <Type Name="Situación_laboral">
       <Column Name="IdSituaciónlaboral" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Situaciónlaboral" Type="System.String" DbType="NVarChar(512) NOT NULL" CanBeNull="false" />
-      <Association Name="Situación_laboral_Usuarios" Member="Usuarios" ThisKey="IdSituaciónlaboral" OtherKey="IdSituaciónlaboral" Type="Usuarios" />
+      <Association Name="Situación_laboral_Usuarios" Member="Usuario" ThisKey="IdSituaciónlaboral" OtherKey="IdSituaciónlaboral" Type="Usuario" />
     </Type>
   </Table>
   <Table Name="dbo.[Tipos de usuario]" Member="Tipos_de_usuario">
     <Type Name="Tipos_de_usuario">
       <Column Name="IdTipoUsuario" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TipoUsuario" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="Tipos_de_usuario_Usuarios" Member="Usuarios" ThisKey="IdTipoUsuario" OtherKey="IdTipoUsuario" Type="Usuarios" />
+      <Association Name="Tipos_de_usuario_Usuarios" Member="Usuario" ThisKey="IdTipoUsuario" OtherKey="IdTipoUsuario" Type="Usuario" />
     </Type>
   </Table>
-  <Table Name="dbo.Usuarios" Member="Usuarios">
-    <Type Name="Usuarios">
+  <Table Name="dbo.Usuarios" Member="Usuario">
+    <Type Name="Usuario">
       <Column Name="IdUsuario" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Nombre" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="Apellidos" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
@@ -92,7 +92,7 @@
       <Association Name="Usuarios_Asistencia" Member="Asistencia" ThisKey="IdUsuario" OtherKey="IdUsuario" Type="Asistencia" />
       <Association Name="Estado_civil_Usuarios" Member="Estado_civil" ThisKey="IdEstadocivil" OtherKey="IdEstadocivil" Type="Estado_civil" IsForeignKey="true" DeleteRule="SET NULL" />
       <Association Name="Estudios_Usuarios" Member="Estudios" ThisKey="IdEstudios" OtherKey="IdEstudios" Type="Estudios" IsForeignKey="true" DeleteRule="SET NULL" />
-      <Association Name="Intereses_Usuarios" Member="Intereses" ThisKey="IdIntereses" OtherKey="IdIntereses" Type="Intereses" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="Intereses_Usuarios" Member="Interes" ThisKey="IdIntereses" OtherKey="IdIntereses" Type="Interes" IsForeignKey="true" DeleteRule="SET NULL" />
       <Association Name="Origen_Usuarios" Member="Origen" ThisKey="IdOrigen" OtherKey="IdOrigen" Type="Origen" IsForeignKey="true" DeleteRule="SET NULL" />
       <Association Name="Profesión_Usuarios" Member="Profesión" ThisKey="IdProfesión" OtherKey="IdProfesión" Type="Profesión" IsForeignKey="true" DeleteRule="SET NULL" />
       <Association Name="Situación_laboral_Usuarios" Member="Situación_laboral" ThisKey="IdSituaciónlaboral" OtherKey="IdSituaciónlaboral" Type="Situación_laboral" IsForeignKey="true" DeleteRule="SET NULL" />

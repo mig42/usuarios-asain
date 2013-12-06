@@ -39,9 +39,9 @@ namespace UsuariosAsain
     partial void InsertEstudios(Estudios instance);
     partial void UpdateEstudios(Estudios instance);
     partial void DeleteEstudios(Estudios instance);
-    partial void InsertIntereses(Intereses instance);
-    partial void UpdateIntereses(Intereses instance);
-    partial void DeleteIntereses(Intereses instance);
+    partial void InsertInteres(Interes instance);
+    partial void UpdateInteres(Interes instance);
+    partial void DeleteInteres(Interes instance);
     partial void InsertOrigen(Origen instance);
     partial void UpdateOrigen(Origen instance);
     partial void DeleteOrigen(Origen instance);
@@ -54,9 +54,9 @@ namespace UsuariosAsain
     partial void InsertTipos_de_usuario(Tipos_de_usuario instance);
     partial void UpdateTipos_de_usuario(Tipos_de_usuario instance);
     partial void DeleteTipos_de_usuario(Tipos_de_usuario instance);
-    partial void InsertUsuarios(Usuarios instance);
-    partial void UpdateUsuarios(Usuarios instance);
-    partial void DeleteUsuarios(Usuarios instance);
+    partial void InsertUsuario(Usuario instance);
+    partial void UpdateUsuario(Usuario instance);
+    partial void DeleteUsuario(Usuario instance);
     #endregion
 		
 		public DatosUsuariosDataContext() : 
@@ -113,11 +113,11 @@ namespace UsuariosAsain
 			}
 		}
 		
-		public System.Data.Linq.Table<Intereses> Intereses
+		public System.Data.Linq.Table<Interes> Interes
 		{
 			get
 			{
-				return this.GetTable<Intereses>();
+				return this.GetTable<Interes>();
 			}
 		}
 		
@@ -153,11 +153,11 @@ namespace UsuariosAsain
 			}
 		}
 		
-		public System.Data.Linq.Table<Usuarios> Usuarios
+		public System.Data.Linq.Table<Usuario> Usuario
 		{
 			get
 			{
-				return this.GetTable<Usuarios>();
+				return this.GetTable<Usuario>();
 			}
 		}
 	}
@@ -176,7 +176,7 @@ namespace UsuariosAsain
 		
 		private string _Comentario;
 		
-		private EntityRef<Usuarios> _Usuarios;
+		private EntityRef<Usuario> _Usuario;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -194,7 +194,7 @@ namespace UsuariosAsain
 		
 		public Asistencia()
 		{
-			this._Usuarios = default(EntityRef<Usuarios>);
+			this._Usuario = default(EntityRef<Usuario>);
 			OnCreated();
 		}
 		
@@ -229,7 +229,7 @@ namespace UsuariosAsain
 			{
 				if ((this._IdUsuario != value))
 				{
-					if (this._Usuarios.HasLoadedOrAssignedValue)
+					if (this._Usuario.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -282,26 +282,26 @@ namespace UsuariosAsain
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuarios_Asistencia", Storage="_Usuarios", ThisKey="IdUsuario", OtherKey="IdUsuario", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public Usuarios Usuarios
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuarios_Asistencia", Storage="_Usuario", ThisKey="IdUsuario", OtherKey="IdUsuario", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Usuario Usuario
 		{
 			get
 			{
-				return this._Usuarios.Entity;
+				return this._Usuario.Entity;
 			}
 			set
 			{
-				Usuarios previousValue = this._Usuarios.Entity;
+				Usuario previousValue = this._Usuario.Entity;
 				if (((previousValue != value) 
-							|| (this._Usuarios.HasLoadedOrAssignedValue == false)))
+							|| (this._Usuario.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Usuarios.Entity = null;
+						this._Usuario.Entity = null;
 						previousValue.Asistencia.Remove(this);
 					}
-					this._Usuarios.Entity = value;
+					this._Usuario.Entity = value;
 					if ((value != null))
 					{
 						value.Asistencia.Add(this);
@@ -311,7 +311,7 @@ namespace UsuariosAsain
 					{
 						this._IdUsuario = default(int);
 					}
-					this.SendPropertyChanged("Usuarios");
+					this.SendPropertyChanged("Usuario");
 				}
 			}
 		}
@@ -347,7 +347,7 @@ namespace UsuariosAsain
 		
 		private string _Estadocivil;
 		
-		private EntitySet<Usuarios> _Usuarios;
+		private EntitySet<Usuario> _Usuario;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -361,7 +361,7 @@ namespace UsuariosAsain
 		
 		public Estado_civil()
 		{
-			this._Usuarios = new EntitySet<Usuarios>(new Action<Usuarios>(this.attach_Usuarios), new Action<Usuarios>(this.detach_Usuarios));
+			this._Usuario = new EntitySet<Usuario>(new Action<Usuario>(this.attach_Usuario), new Action<Usuario>(this.detach_Usuario));
 			OnCreated();
 		}
 		
@@ -405,16 +405,16 @@ namespace UsuariosAsain
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Estado_civil_Usuarios", Storage="_Usuarios", ThisKey="IdEstadocivil", OtherKey="IdEstadocivil")]
-		public EntitySet<Usuarios> Usuarios
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Estado_civil_Usuarios", Storage="_Usuario", ThisKey="IdEstadocivil", OtherKey="IdEstadocivil")]
+		public EntitySet<Usuario> Usuario
 		{
 			get
 			{
-				return this._Usuarios;
+				return this._Usuario;
 			}
 			set
 			{
-				this._Usuarios.Assign(value);
+				this._Usuario.Assign(value);
 			}
 		}
 		
@@ -438,13 +438,13 @@ namespace UsuariosAsain
 			}
 		}
 		
-		private void attach_Usuarios(Usuarios entity)
+		private void attach_Usuario(Usuario entity)
 		{
 			this.SendPropertyChanging();
 			entity.Estado_civil = this;
 		}
 		
-		private void detach_Usuarios(Usuarios entity)
+		private void detach_Usuario(Usuario entity)
 		{
 			this.SendPropertyChanging();
 			entity.Estado_civil = null;
@@ -461,7 +461,7 @@ namespace UsuariosAsain
 		
 		private string _Estudios1;
 		
-		private EntitySet<Usuarios> _Usuarios;
+		private EntitySet<Usuario> _Usuario;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -475,7 +475,7 @@ namespace UsuariosAsain
 		
 		public Estudios()
 		{
-			this._Usuarios = new EntitySet<Usuarios>(new Action<Usuarios>(this.attach_Usuarios), new Action<Usuarios>(this.detach_Usuarios));
+			this._Usuario = new EntitySet<Usuario>(new Action<Usuario>(this.attach_Usuario), new Action<Usuario>(this.detach_Usuario));
 			OnCreated();
 		}
 		
@@ -519,16 +519,16 @@ namespace UsuariosAsain
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Estudios_Usuarios", Storage="_Usuarios", ThisKey="IdEstudios", OtherKey="IdEstudios")]
-		public EntitySet<Usuarios> Usuarios
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Estudios_Usuarios", Storage="_Usuario", ThisKey="IdEstudios", OtherKey="IdEstudios")]
+		public EntitySet<Usuario> Usuario
 		{
 			get
 			{
-				return this._Usuarios;
+				return this._Usuario;
 			}
 			set
 			{
-				this._Usuarios.Assign(value);
+				this._Usuario.Assign(value);
 			}
 		}
 		
@@ -552,13 +552,13 @@ namespace UsuariosAsain
 			}
 		}
 		
-		private void attach_Usuarios(Usuarios entity)
+		private void attach_Usuario(Usuario entity)
 		{
 			this.SendPropertyChanging();
 			entity.Estudios = this;
 		}
 		
-		private void detach_Usuarios(Usuarios entity)
+		private void detach_Usuario(Usuario entity)
 		{
 			this.SendPropertyChanging();
 			entity.Estudios = null;
@@ -566,7 +566,7 @@ namespace UsuariosAsain
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Intereses")]
-	public partial class Intereses : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Interes : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -575,7 +575,7 @@ namespace UsuariosAsain
 		
 		private string _Intereses1;
 		
-		private EntitySet<Usuarios> _Usuarios;
+		private EntitySet<Usuario> _Usuario;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -587,9 +587,9 @@ namespace UsuariosAsain
     partial void OnIntereses1Changed();
     #endregion
 		
-		public Intereses()
+		public Interes()
 		{
-			this._Usuarios = new EntitySet<Usuarios>(new Action<Usuarios>(this.attach_Usuarios), new Action<Usuarios>(this.detach_Usuarios));
+			this._Usuario = new EntitySet<Usuario>(new Action<Usuario>(this.attach_Usuario), new Action<Usuario>(this.detach_Usuario));
 			OnCreated();
 		}
 		
@@ -633,16 +633,16 @@ namespace UsuariosAsain
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Intereses_Usuarios", Storage="_Usuarios", ThisKey="IdIntereses", OtherKey="IdIntereses")]
-		public EntitySet<Usuarios> Usuarios
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Intereses_Usuarios", Storage="_Usuario", ThisKey="IdIntereses", OtherKey="IdIntereses")]
+		public EntitySet<Usuario> Usuario
 		{
 			get
 			{
-				return this._Usuarios;
+				return this._Usuario;
 			}
 			set
 			{
-				this._Usuarios.Assign(value);
+				this._Usuario.Assign(value);
 			}
 		}
 		
@@ -666,16 +666,16 @@ namespace UsuariosAsain
 			}
 		}
 		
-		private void attach_Usuarios(Usuarios entity)
+		private void attach_Usuario(Usuario entity)
 		{
 			this.SendPropertyChanging();
-			entity.Intereses = this;
+			entity.Interes = this;
 		}
 		
-		private void detach_Usuarios(Usuarios entity)
+		private void detach_Usuario(Usuario entity)
 		{
 			this.SendPropertyChanging();
-			entity.Intereses = null;
+			entity.Interes = null;
 		}
 	}
 	
@@ -689,7 +689,7 @@ namespace UsuariosAsain
 		
 		private string _País;
 		
-		private EntitySet<Usuarios> _Usuarios;
+		private EntitySet<Usuario> _Usuario;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -703,7 +703,7 @@ namespace UsuariosAsain
 		
 		public Origen()
 		{
-			this._Usuarios = new EntitySet<Usuarios>(new Action<Usuarios>(this.attach_Usuarios), new Action<Usuarios>(this.detach_Usuarios));
+			this._Usuario = new EntitySet<Usuario>(new Action<Usuario>(this.attach_Usuario), new Action<Usuario>(this.detach_Usuario));
 			OnCreated();
 		}
 		
@@ -747,16 +747,16 @@ namespace UsuariosAsain
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Origen_Usuarios", Storage="_Usuarios", ThisKey="IdOrigen", OtherKey="IdOrigen")]
-		public EntitySet<Usuarios> Usuarios
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Origen_Usuarios", Storage="_Usuario", ThisKey="IdOrigen", OtherKey="IdOrigen")]
+		public EntitySet<Usuario> Usuario
 		{
 			get
 			{
-				return this._Usuarios;
+				return this._Usuario;
 			}
 			set
 			{
-				this._Usuarios.Assign(value);
+				this._Usuario.Assign(value);
 			}
 		}
 		
@@ -780,13 +780,13 @@ namespace UsuariosAsain
 			}
 		}
 		
-		private void attach_Usuarios(Usuarios entity)
+		private void attach_Usuario(Usuario entity)
 		{
 			this.SendPropertyChanging();
 			entity.Origen = this;
 		}
 		
-		private void detach_Usuarios(Usuarios entity)
+		private void detach_Usuario(Usuario entity)
 		{
 			this.SendPropertyChanging();
 			entity.Origen = null;
@@ -803,7 +803,7 @@ namespace UsuariosAsain
 		
 		private string _Profesión1;
 		
-		private EntitySet<Usuarios> _Usuarios;
+		private EntitySet<Usuario> _Usuario;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -817,7 +817,7 @@ namespace UsuariosAsain
 		
 		public Profesión()
 		{
-			this._Usuarios = new EntitySet<Usuarios>(new Action<Usuarios>(this.attach_Usuarios), new Action<Usuarios>(this.detach_Usuarios));
+			this._Usuario = new EntitySet<Usuario>(new Action<Usuario>(this.attach_Usuario), new Action<Usuario>(this.detach_Usuario));
 			OnCreated();
 		}
 		
@@ -861,16 +861,16 @@ namespace UsuariosAsain
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Profesión_Usuarios", Storage="_Usuarios", ThisKey="IdProfesión", OtherKey="IdProfesión")]
-		public EntitySet<Usuarios> Usuarios
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Profesión_Usuarios", Storage="_Usuario", ThisKey="IdProfesión", OtherKey="IdProfesión")]
+		public EntitySet<Usuario> Usuario
 		{
 			get
 			{
-				return this._Usuarios;
+				return this._Usuario;
 			}
 			set
 			{
-				this._Usuarios.Assign(value);
+				this._Usuario.Assign(value);
 			}
 		}
 		
@@ -894,13 +894,13 @@ namespace UsuariosAsain
 			}
 		}
 		
-		private void attach_Usuarios(Usuarios entity)
+		private void attach_Usuario(Usuario entity)
 		{
 			this.SendPropertyChanging();
 			entity.Profesión = this;
 		}
 		
-		private void detach_Usuarios(Usuarios entity)
+		private void detach_Usuario(Usuario entity)
 		{
 			this.SendPropertyChanging();
 			entity.Profesión = null;
@@ -917,7 +917,7 @@ namespace UsuariosAsain
 		
 		private string _Situaciónlaboral;
 		
-		private EntitySet<Usuarios> _Usuarios;
+		private EntitySet<Usuario> _Usuario;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -931,7 +931,7 @@ namespace UsuariosAsain
 		
 		public Situación_laboral()
 		{
-			this._Usuarios = new EntitySet<Usuarios>(new Action<Usuarios>(this.attach_Usuarios), new Action<Usuarios>(this.detach_Usuarios));
+			this._Usuario = new EntitySet<Usuario>(new Action<Usuario>(this.attach_Usuario), new Action<Usuario>(this.detach_Usuario));
 			OnCreated();
 		}
 		
@@ -975,16 +975,16 @@ namespace UsuariosAsain
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Situación_laboral_Usuarios", Storage="_Usuarios", ThisKey="IdSituaciónlaboral", OtherKey="IdSituaciónlaboral")]
-		public EntitySet<Usuarios> Usuarios
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Situación_laboral_Usuarios", Storage="_Usuario", ThisKey="IdSituaciónlaboral", OtherKey="IdSituaciónlaboral")]
+		public EntitySet<Usuario> Usuario
 		{
 			get
 			{
-				return this._Usuarios;
+				return this._Usuario;
 			}
 			set
 			{
-				this._Usuarios.Assign(value);
+				this._Usuario.Assign(value);
 			}
 		}
 		
@@ -1008,13 +1008,13 @@ namespace UsuariosAsain
 			}
 		}
 		
-		private void attach_Usuarios(Usuarios entity)
+		private void attach_Usuario(Usuario entity)
 		{
 			this.SendPropertyChanging();
 			entity.Situación_laboral = this;
 		}
 		
-		private void detach_Usuarios(Usuarios entity)
+		private void detach_Usuario(Usuario entity)
 		{
 			this.SendPropertyChanging();
 			entity.Situación_laboral = null;
@@ -1031,7 +1031,7 @@ namespace UsuariosAsain
 		
 		private string _TipoUsuario;
 		
-		private EntitySet<Usuarios> _Usuarios;
+		private EntitySet<Usuario> _Usuario;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -1045,7 +1045,7 @@ namespace UsuariosAsain
 		
 		public Tipos_de_usuario()
 		{
-			this._Usuarios = new EntitySet<Usuarios>(new Action<Usuarios>(this.attach_Usuarios), new Action<Usuarios>(this.detach_Usuarios));
+			this._Usuario = new EntitySet<Usuario>(new Action<Usuario>(this.attach_Usuario), new Action<Usuario>(this.detach_Usuario));
 			OnCreated();
 		}
 		
@@ -1089,16 +1089,16 @@ namespace UsuariosAsain
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tipos_de_usuario_Usuarios", Storage="_Usuarios", ThisKey="IdTipoUsuario", OtherKey="IdTipoUsuario")]
-		public EntitySet<Usuarios> Usuarios
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tipos_de_usuario_Usuarios", Storage="_Usuario", ThisKey="IdTipoUsuario", OtherKey="IdTipoUsuario")]
+		public EntitySet<Usuario> Usuario
 		{
 			get
 			{
-				return this._Usuarios;
+				return this._Usuario;
 			}
 			set
 			{
-				this._Usuarios.Assign(value);
+				this._Usuario.Assign(value);
 			}
 		}
 		
@@ -1122,13 +1122,13 @@ namespace UsuariosAsain
 			}
 		}
 		
-		private void attach_Usuarios(Usuarios entity)
+		private void attach_Usuario(Usuario entity)
 		{
 			this.SendPropertyChanging();
 			entity.Tipos_de_usuario = this;
 		}
 		
-		private void detach_Usuarios(Usuarios entity)
+		private void detach_Usuario(Usuario entity)
 		{
 			this.SendPropertyChanging();
 			entity.Tipos_de_usuario = null;
@@ -1136,7 +1136,7 @@ namespace UsuariosAsain
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Usuarios")]
-	public partial class Usuarios : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -1205,7 +1205,7 @@ namespace UsuariosAsain
 		
 		private EntityRef<Estudios> _Estudios;
 		
-		private EntityRef<Intereses> _Intereses;
+		private EntityRef<Interes> _Interes;
 		
 		private EntityRef<Origen> _Origen;
 		
@@ -1279,12 +1279,12 @@ namespace UsuariosAsain
     partial void OnIdSituaciónlaboralChanged();
     #endregion
 		
-		public Usuarios()
+		public Usuario()
 		{
 			this._Asistencia = new EntitySet<Asistencia>(new Action<Asistencia>(this.attach_Asistencia), new Action<Asistencia>(this.detach_Asistencia));
 			this._Estado_civil = default(EntityRef<Estado_civil>);
 			this._Estudios = default(EntityRef<Estudios>);
-			this._Intereses = default(EntityRef<Intereses>);
+			this._Interes = default(EntityRef<Interes>);
 			this._Origen = default(EntityRef<Origen>);
 			this._Profesión = default(EntityRef<Profesión>);
 			this._Situación_laboral = default(EntityRef<Situación_laboral>);
@@ -1863,7 +1863,7 @@ namespace UsuariosAsain
 			{
 				if ((this._IdIntereses != value))
 				{
-					if (this._Intereses.HasLoadedOrAssignedValue)
+					if (this._Interes.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -1930,12 +1930,12 @@ namespace UsuariosAsain
 					if ((previousValue != null))
 					{
 						this._Estado_civil.Entity = null;
-						previousValue.Usuarios.Remove(this);
+						previousValue.Usuario.Remove(this);
 					}
 					this._Estado_civil.Entity = value;
 					if ((value != null))
 					{
-						value.Usuarios.Add(this);
+						value.Usuario.Add(this);
 						this._IdEstadocivil = value.IdEstadocivil;
 					}
 					else
@@ -1964,12 +1964,12 @@ namespace UsuariosAsain
 					if ((previousValue != null))
 					{
 						this._Estudios.Entity = null;
-						previousValue.Usuarios.Remove(this);
+						previousValue.Usuario.Remove(this);
 					}
 					this._Estudios.Entity = value;
 					if ((value != null))
 					{
-						value.Usuarios.Add(this);
+						value.Usuario.Add(this);
 						this._IdEstudios = value.IdEstudios;
 					}
 					else
@@ -1981,36 +1981,36 @@ namespace UsuariosAsain
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Intereses_Usuarios", Storage="_Intereses", ThisKey="IdIntereses", OtherKey="IdIntereses", IsForeignKey=true, DeleteRule="SET NULL")]
-		public Intereses Intereses
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Intereses_Usuarios", Storage="_Interes", ThisKey="IdIntereses", OtherKey="IdIntereses", IsForeignKey=true, DeleteRule="SET NULL")]
+		public Interes Interes
 		{
 			get
 			{
-				return this._Intereses.Entity;
+				return this._Interes.Entity;
 			}
 			set
 			{
-				Intereses previousValue = this._Intereses.Entity;
+				Interes previousValue = this._Interes.Entity;
 				if (((previousValue != value) 
-							|| (this._Intereses.HasLoadedOrAssignedValue == false)))
+							|| (this._Interes.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Intereses.Entity = null;
-						previousValue.Usuarios.Remove(this);
+						this._Interes.Entity = null;
+						previousValue.Usuario.Remove(this);
 					}
-					this._Intereses.Entity = value;
+					this._Interes.Entity = value;
 					if ((value != null))
 					{
-						value.Usuarios.Add(this);
+						value.Usuario.Add(this);
 						this._IdIntereses = value.IdIntereses;
 					}
 					else
 					{
 						this._IdIntereses = default(Nullable<int>);
 					}
-					this.SendPropertyChanged("Intereses");
+					this.SendPropertyChanged("Interes");
 				}
 			}
 		}
@@ -2032,12 +2032,12 @@ namespace UsuariosAsain
 					if ((previousValue != null))
 					{
 						this._Origen.Entity = null;
-						previousValue.Usuarios.Remove(this);
+						previousValue.Usuario.Remove(this);
 					}
 					this._Origen.Entity = value;
 					if ((value != null))
 					{
-						value.Usuarios.Add(this);
+						value.Usuario.Add(this);
 						this._IdOrigen = value.IdOrigen;
 					}
 					else
@@ -2066,12 +2066,12 @@ namespace UsuariosAsain
 					if ((previousValue != null))
 					{
 						this._Profesión.Entity = null;
-						previousValue.Usuarios.Remove(this);
+						previousValue.Usuario.Remove(this);
 					}
 					this._Profesión.Entity = value;
 					if ((value != null))
 					{
-						value.Usuarios.Add(this);
+						value.Usuario.Add(this);
 						this._IdProfesión = value.IdProfesión;
 					}
 					else
@@ -2100,12 +2100,12 @@ namespace UsuariosAsain
 					if ((previousValue != null))
 					{
 						this._Situación_laboral.Entity = null;
-						previousValue.Usuarios.Remove(this);
+						previousValue.Usuario.Remove(this);
 					}
 					this._Situación_laboral.Entity = value;
 					if ((value != null))
 					{
-						value.Usuarios.Add(this);
+						value.Usuario.Add(this);
 						this._IdSituaciónlaboral = value.IdSituaciónlaboral;
 					}
 					else
@@ -2134,12 +2134,12 @@ namespace UsuariosAsain
 					if ((previousValue != null))
 					{
 						this._Tipos_de_usuario.Entity = null;
-						previousValue.Usuarios.Remove(this);
+						previousValue.Usuario.Remove(this);
 					}
 					this._Tipos_de_usuario.Entity = value;
 					if ((value != null))
 					{
-						value.Usuarios.Add(this);
+						value.Usuario.Add(this);
 						this._IdTipoUsuario = value.IdTipoUsuario;
 					}
 					else
@@ -2174,13 +2174,13 @@ namespace UsuariosAsain
 		private void attach_Asistencia(Asistencia entity)
 		{
 			this.SendPropertyChanging();
-			entity.Usuarios = this;
+			entity.Usuario = this;
 		}
 		
 		private void detach_Asistencia(Asistencia entity)
 		{
 			this.SendPropertyChanging();
-			entity.Usuarios = null;
+			entity.Usuario = null;
 		}
 	}
 }

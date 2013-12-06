@@ -21,7 +21,7 @@
       </nestedChildShapes>
     </classShape>
     <classShape Id="d5976018-65a2-4c7d-985f-f194d534f6c0" absoluteBounds="18.5, 9.25, 2, 1.1939925130208344">
-      <DataClassMoniker Name="/DatosUsuariosDataContext/Intereses" />
+      <DataClassMoniker Name="/DatosUsuariosDataContext/Interes" />
       <nestedChildShapes>
         <elementListCompartment Id="5c211c69-06e5-4ea6-96e0-c4a3891eee72" absoluteBounds="18.515, 9.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
@@ -51,13 +51,13 @@
       </nestedChildShapes>
     </classShape>
     <classShape Id="2e3232ab-9970-48d3-b5be-c9d8b92fd943" absoluteBounds="13.625, 3.5, 2, 6.3861311848958326">
-      <DataClassMoniker Name="/DatosUsuariosDataContext/Usuarios" />
+      <DataClassMoniker Name="/DatosUsuariosDataContext/Usuario" />
       <nestedChildShapes>
         <elementListCompartment Id="c11f54cb-b1b9-4f93-86e2-fc9b016327cc" absoluteBounds="13.64, 3.96, 1.9700000000000002, 5.826131184895833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(15.625 : 6.66429768880208); (16.375 : 6.66429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/DatosUsuariosDataContext/Usuarios/Usuarios_Asistencia" />
+      <AssociationMoniker Name="/DatosUsuariosDataContext/Usuario/Usuarios_Asistencia" />
       <nodes>
         <classShapeMoniker Id="2e3232ab-9970-48d3-b5be-c9d8b92fd943" />
         <classShapeMoniker Id="96c0f284-f603-4740-861d-bba0e69973dc" />
@@ -78,7 +78,7 @@
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(18.5 : 9.56806559244792); (15.625 : 9.56806559244792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/DatosUsuariosDataContext/Intereses/Intereses_Usuarios" />
+      <AssociationMoniker Name="/DatosUsuariosDataContext/Interes/Intereses_Usuarios" />
       <nodes>
         <classShapeMoniker Id="d5976018-65a2-4c7d-985f-f194d534f6c0" />
         <classShapeMoniker Id="2e3232ab-9970-48d3-b5be-c9d8b92fd943" />
