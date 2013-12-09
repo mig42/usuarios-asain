@@ -58,5 +58,10 @@ namespace UsuariosAsain
                 return null;
             return usuario.ToList<Usuario>()[0];
         }
+
+        internal void GuardarCambios()
+        {
+            dataContext.SubmitChanges();
+        }
     }
 }

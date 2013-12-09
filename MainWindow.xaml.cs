@@ -42,6 +42,16 @@ namespace UsuariosAsain
             controlUsuario.ReordenarListaDeUsuarios(Criterio.Nombre);
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            controlUsuario.GuardarCambios();
+        }
+
+        private void GuardarTodo_Click(object sender, RoutedEventArgs e)
+        {
+            controlUsuario.GuardarCambios();
+        }
+
 
     }
 }

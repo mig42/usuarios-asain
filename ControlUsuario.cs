@@ -27,18 +27,29 @@ namespace UsuariosAsain
         private Criterio criterioActual = Criterio.Dni;
         private bool ordenacionDescendente = false;
 
-        private readonly BackgroundWorker backgroundWorker;
+        private readonly BackgroundWorker usuariosBackgroundWorker;
+        private readonly BackgroundWorker guardarBackgroundWorker;
 
         public ControlUsuario()
         {
-            backgroundWorker = new BackgroundWorker();
-            backgroundWorker.DoWork += delegate
+            usuariosBackgroundWorker = new BackgroundWorker();
+            usuariosBackgroundWorker.DoWork += delegate
             {
                 viewModel.Usuarios = RecuperarListaDeUsuarios();
             };
-            backgroundWorker.RunWorkerCompleted += delegate
+            usuariosBackgroundWorker.RunWorkerCompleted += delegate
             {
                 NotifyPropertyChange("CanExecuteThread");
+            };
+
+            guardarBackgroundWorker = new BackgroundWorker();
+            guardarBackgroundWorker.DoWork += delegate
+            {
+                dataAccess.GuardarCambios();
+            };
+            guardarBackgroundWorker.RunWorkerCompleted += delegate
+            {
+                NotifyPropertyChange("CanSave");
             };
         }
 
@@ -76,13 +87,18 @@ namespace UsuariosAsain
         {
             if (dataAccess == null || viewModel == null)
                 return;
-            backgroundWorker.RunWorkerAsync();
+            usuariosBackgroundWorker.RunWorkerAsync();
             NotifyPropertyChange("CanExecuteThread");
         }
 
         public bool CanExecuteThread
         {
-            get { return !backgroundWorker.IsBusy; }
+            get { return !usuariosBackgroundWorker.IsBusy; }
+        }
+
+        public bool CanSave
+        {
+            get { return !guardarBackgroundWorker.IsBusy; }
         }
 
         public void AlternarDirecciónDeOrdenado()
@@ -102,6 +118,12 @@ namespace UsuariosAsain
             criterioActual = nuevoCriterio;
             ordenacionDescendente = false;
             RefrescarListaDeUsuarios();
+        }
+
+        public void GuardarCambios()
+        {
+            guardarBackgroundWorker.RunWorkerAsync();
+            NotifyPropertyChange("CanSave");
         }
 
         private ObservableCollection<Usuario> RecuperarListaDeUsuarios()

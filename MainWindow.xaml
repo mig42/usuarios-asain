@@ -3,26 +3,86 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:UsuariosAsain" x:Class="UsuariosAsain.MainWindow"
         Title="ASAIN - Usuarios"
-        MinHeight="500" MinWidth="800" DataContext="{StaticResource modeloVista}"
+        MinHeight="500" MinWidth="900" DataContext="{StaticResource modeloVista}"
         Width="1024" Height="640" IsEnabled="{Binding Source={StaticResource controlUsuario}, Path=CanExecuteThread}"
-        ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterOwner">
+        ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterOwner" Closing="Window_Closing"
+    >
     <Grid Margin="0,0,0,0" >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="630"/>
+            <ColumnDefinition Width="325"/>
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
-        <ListView FontFamily="Maven Pro" x:Name="userList" BorderThickness="2" DataContext="{StaticResource modeloVista}" ItemsSource="{Binding Path=Usuarios}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListView Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" FontFamily="Calibri" x:Name="userList" BorderThickness="2" DataContext="{StaticResource modeloVista}" SelectedItem="{Binding UsuarioSeleccionado}" ItemsSource="{Binding Path=Usuarios}">
             <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="200" DisplayMemberBinding="{Binding Path=NúmFax}">
+                <GridView AllowsColumnReorder="True">
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Path=NúmFax}">
                         <GridViewColumnHeader Click="DniColumnHeader_Click">DNI/NIE</GridViewColumnHeader>
                     </GridViewColumn>
-                    <GridViewColumn Width="400" DisplayMemberBinding="{Binding Path=Nombre}">
+                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Path=Nombre}">
                         <GridViewColumnHeader Click="NombreColumnHeader_Click">Nombre</GridViewColumnHeader>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
+        <GridSplitter HorizontalAlignment="Right" VerticalAlignment="Stretch" Grid.Column="1" Grid.RowSpan="4" ResizeBehavior="PreviousAndNext"
+                      Width="5" Background="Aquamarine" />
+        
+                <TextBox Grid.Column="2" Grid.Row="0"
+                    TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,10,10,10"
+                     Text="{Binding Path=UsuarioSeleccionado.Nombre}"
+                     FontSize="36" />
+        <Separator Grid.Column="2" Grid.Row="1" Height="3"  Margin="40,10,40,10" Background="Aquamarine"/>
+        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical" Grid.IsSharedSizeScope="True">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MinWidth="125" />
+                    <ColumnDefinition Width="2*" MinWidth="250" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="Label" />
+                        <ColumnDefinition Width="*" MinWidth="50" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Content="DNI/NIE:"/>
+                    <TextBox Grid.Column="1" Grid.Row="0" TextWrapping="Wrap"
+                             Text="{Binding UsuarioSeleccionado.NúmFax}" />
+                    <Label Grid.Column="0" Grid.Row="1" Content="Sexo:"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" TextWrapping="Wrap"
+                             Text="{Binding UsuarioSeleccionado.Tipos_de_usuario.TipoUsuario}" />
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="Label" />
+                        <ColumnDefinition Width="*" MinWidth="150"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Content="Origen:"/>
+                    <TextBox Grid.Column="1" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center"
+                             Text="{Binding UsuarioSeleccionado.Origen.País}" />
+                    <Label Grid.Column="0" Grid.Row="1" Content="Dirección:"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center"
+                             Text="{Binding UsuarioSeleccionado.Dirección}" />
+                </Grid>
+            </Grid>
+        </StackPanel>
+        <Button Grid.Column="2" Grid.Row="3" Width="100"
+                HorizontalAlignment="Right" Margin="5,5,5,5" Padding="5,5,5,5" Content="Guardar todo..."
+                Click="GuardarTodo_Click" Background="White" BorderBrush="Aquamarine" 
+                TextBlock.FontFamily="Calibri" TextBlock.FontStyle="Italic"
+                IsEnabled="{Binding Source={StaticResource controlUsuario}, Path=CanSave}"/>
     </Grid>
 </Window>

@@ -18,6 +18,27 @@
             x:Key="controlUsuario"
             DataAccess="{StaticResource dataAccess}"
             ViewModel="{StaticResource modeloVista}" />
+        
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Width" Value="Auto" />
+            <Setter Property="Height" Value="Auto"/>
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="TextWrapping" Value="NoWrap" />
+        </Style>
 
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="Width" Value="Auto" />
+            <Setter Property="Height" Value="Auto"/>
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="18" />
+        </Style>
     </Application.Resources>
 </Application>
