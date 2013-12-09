@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
+using System.Threading;
 
 namespace UsuariosAsain
 {
@@ -20,9 +22,26 @@ namespace UsuariosAsain
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ControlUsuario controlUsuario;
+        private ViewModel modeloVista;
+
         public MainWindow()
         {
+            modeloVista = (ViewModel)FindResource("modeloVista");
+            controlUsuario = (ControlUsuario)FindResource("controlUsuario");
             InitializeComponent();
         }
+
+        private void DniColumnHeader_Click(object sender, RoutedEventArgs e)
+        {
+            controlUsuario.ReordenarListaDeUsuarios(Criterio.Dni);
+        }
+
+        private void NombreColumnHeader_Click(object sender, RoutedEventArgs e)
+        {
+            controlUsuario.ReordenarListaDeUsuarios(Criterio.Nombre);
+        }
+
+
     }
 }

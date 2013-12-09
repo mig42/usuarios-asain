@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("UsuariosAsain")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("ASAIN-VA")]
 [assembly: AssemblyProduct("UsuariosAsain")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCopyright("Copyright © ASAIN 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

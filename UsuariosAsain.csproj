@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +63,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UsuarioObservable.cs" />
+    <Compile Include="ControlUsuario.cs" />
     <Compile Include="DataAccess.cs" />
     <Compile Include="DatosUsuarios.designer.cs">
       <AutoGen>True</AutoGen>
@@ -99,6 +102,7 @@
     <None Include="DatosUsuarios.dbml.layout">
       <DependentUpon>DatosUsuarios.dbml</DependentUpon>
     </None>
+    <None Include="Properties\DataSources\ViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

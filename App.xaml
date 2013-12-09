@@ -1,8 +1,23 @@
-﻿<Application x:Class="UsuariosAsain.App"
+﻿<Application
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:x9="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dataModel="clr-namespace:UsuariosAsain"
+             xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="UsuariosAsain.App"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <dataModel:DatosUsuariosDataContext
+            x:Key="dataContext" />
+        <dataModel:DataAccess
+            x:Key="dataAccess"
+            DataContext="{StaticResource ResourceKey=dataContext}" />
+        <dataModel:ViewModel
+            x:Key="modeloVista" />
+        <dataModel:ControlUsuario 
+            x:Key="controlUsuario"
+            DataAccess="{StaticResource dataAccess}"
+            ViewModel="{StaticResource modeloVista}" />
+
     </Application.Resources>
 </Application>
