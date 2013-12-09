@@ -12,7 +12,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ListView FontFamily="Maven Pro" BorderThickness="2" DataContext="{StaticResource modeloVista}" ItemsSource="{Binding Path=Usuarios}">
+        <ListView FontFamily="Maven Pro" x:Name="userList" BorderThickness="2" DataContext="{StaticResource modeloVista}" ItemsSource="{Binding Path=Usuarios}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="200" DisplayMemberBinding="{Binding Path=NúmFax}">

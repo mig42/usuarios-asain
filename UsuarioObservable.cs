@@ -9,17 +9,7 @@ namespace UsuariosAsain
 {
     class UsuarioObservable : ObservableCollection<Usuario>
     {
-        public UsuarioObservable()
-        {
-
-        }
-
-        public UsuarioObservable(IQueryable<Usuario> usuarios)
-        {
-            foreach (Usuario u in usuarios)
-            {
-                this.Add(u);
-            }
-        }
+        public UsuarioObservable() : base() { }
+        public UsuarioObservable(IEnumerable<Usuario> usuarios) : base(usuarios) { }
     }
 }

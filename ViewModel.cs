@@ -24,7 +24,7 @@ namespace UsuariosAsain
         private ObservableCollection<Usuario> _usuarios = new UsuarioObservable();
         private Usuario _usuarioSeleccionado = new Usuario();
 
-        internal ObservableCollection<Usuario> Usuarios
+        public ObservableCollection<Usuario> Usuarios
         {
             get
             {
@@ -32,13 +32,14 @@ namespace UsuariosAsain
             }
             set
             {
-                _usuarios.Clear();
-                _usuarios.Concat(value);
+                if (value == _usuarios)
+                    return;
+                _usuarios = value;
                 NotifyPropertyChange("Usuarios");
             }
         }
         
-        internal Usuario UsuarioSeleccionado
+        public Usuario UsuarioSeleccionado
         {
             get
             {
@@ -46,9 +47,26 @@ namespace UsuariosAsain
             }
             set
             {
+                if (value == _usuarioSeleccionado)
+                    return;
                 _usuarioSeleccionado = value;
                 NotifyPropertyChange("UsuarioSeleccionado");
             }
+        }
+
+        public void LimpiarUsuarios()
+        {
+            _usuarios.Clear();
+        }
+
+        public void AnyadirUsuario(Usuario u)
+        {
+            _usuarios.Add(u);
+        }
+
+        public void EliminarUsuario(Usuario u)
+        {
+            _usuarios.Remove(u);
         }
     }
 }
