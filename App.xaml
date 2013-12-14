@@ -12,12 +12,15 @@
         <dataModel:DataAccess
             x:Key="dataAccess"
             DataContext="{StaticResource ResourceKey=dataContext}" />
-        <dataModel:ViewModel
+        <dataModel:ModeloVistaUsuarios
             x:Key="modeloVista" />
+        <dataModel:ModeloVistaSexos
+            x:Key="modeloVistaSexos" />
         <dataModel:ControlUsuario 
             x:Key="controlUsuario"
             DataAccess="{StaticResource dataAccess}"
-            ViewModel="{StaticResource modeloVista}" />
+            Usuarios="{StaticResource modeloVista}" 
+            Sexos="{StaticResource modeloVistaSexos}"/>
         
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="FontFamily" Value="Calibri" />
@@ -39,6 +42,12 @@
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="FontSize" Value="18" />
+        </Style>
+        
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="FontFamily" Value="Calibri" />
         </Style>
     </Application.Resources>
 </Application>

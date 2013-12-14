@@ -23,11 +23,11 @@ namespace UsuariosAsain
     public partial class MainWindow : Window
     {
         private ControlUsuario controlUsuario;
-        private ViewModel modeloVista;
+        private ModeloVistaUsuarios modeloVista;
 
         public MainWindow()
         {
-            modeloVista = (ViewModel)FindResource("modeloVista");
+            modeloVista = (ModeloVistaUsuarios)FindResource("modeloVista");
             controlUsuario = (ControlUsuario)FindResource("controlUsuario");
             InitializeComponent();
         }
@@ -51,7 +51,5 @@ namespace UsuariosAsain
         {
             controlUsuario.GuardarCambios();
         }
-
-
     }
 }

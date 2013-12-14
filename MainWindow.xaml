@@ -3,9 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:UsuariosAsain" x:Class="UsuariosAsain.MainWindow"
         Title="ASAIN - Usuarios"
-        MinHeight="500" MinWidth="900" DataContext="{StaticResource modeloVista}"
-        Width="1024" Height="640" IsEnabled="{Binding Source={StaticResource controlUsuario}, Path=CanExecuteThread}"
-        ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterOwner" Closing="Window_Closing"
+        MinHeight="500" MinWidth="900"
+        DataContext="{StaticResource modeloVista}"
+        Width="1024" Height="640"
+        IsEnabled="{Binding Source={StaticResource controlUsuario}, Path=CanExecuteThread}"
+        ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterOwner"
+        Closing="Window_Closing"
     >
     <Grid Margin="0,0,0,0" >
         <Grid.ColumnDefinitions>
@@ -58,8 +62,10 @@
                     <TextBox Grid.Column="1" Grid.Row="0" TextWrapping="Wrap"
                              Text="{Binding UsuarioSeleccionado.NúmFax}" />
                     <Label Grid.Column="0" Grid.Row="1" Content="Sexo:"/>
-                    <TextBox Grid.Column="1" Grid.Row="1" TextWrapping="Wrap"
-                             Text="{Binding UsuarioSeleccionado.Tipos_de_usuario.TipoUsuario}" />
+                    <ComboBox Grid.Column="1" Grid.Row="1"
+                             ItemsSource="{Binding Source={StaticResource modeloVistaSexos}, Path=Sexos}"
+                              DisplayMemberPath="TipoUsuario"
+                             SelectedItem="{Binding UsuarioSeleccionado.Tipos_de_usuario}"/>
                 </Grid>
                 <Grid Grid.Column="1">
                     <Grid.ColumnDefinitions>

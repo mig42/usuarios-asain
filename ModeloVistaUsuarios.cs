@@ -19,7 +19,7 @@ namespace UsuariosAsain
         }
     }
 
-    public class ViewModel : Notificador
+    public class ModeloVistaUsuarios : Notificador
     {
         private ObservableCollection<Usuario> _usuarios = new UsuarioObservable();
         private Usuario _usuarioSeleccionado = new Usuario();

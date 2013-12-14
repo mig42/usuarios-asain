@@ -33,7 +33,8 @@ namespace UsuariosAsain
             }
         }
 
-        internal IQueryable<Usuario> GetAllUsuarios(Expression<Func<Usuario, string>> expresion, bool descending)
+        internal IQueryable<Usuario> GetAllUsuarios(
+            Expression<Func<Usuario, string>> expresion, bool descending)
         {
             IQueryable<Usuario> query = from u in dataContext.Usuario select u;
             if (descending)
@@ -53,10 +54,16 @@ namespace UsuariosAsain
 
         internal Usuario GetUsuarioByDni(string dni)
         {
-            IEnumerable<Usuario> usuario = from u in dataContext.Usuario where u.NúmFax == dni select u;
+            IEnumerable<Usuario> usuario =
+                from u in dataContext.Usuario where u.NúmFax == dni select u;
             if (usuario.Count() == 0)
                 return null;
             return usuario.ToList<Usuario>()[0];
+        }
+
+        internal IQueryable<Tipos_de_usuario> GetAllSexos()
+        {
+            return from sexo in dataContext.Tipos_de_usuario select sexo;
         }
 
         internal void GuardarCambios()
